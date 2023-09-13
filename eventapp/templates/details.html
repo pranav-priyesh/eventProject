@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    
+    <style>
+
+         body{
+
+            justify-content: center;
+            text-align: center;
+            background-color: darkcyan;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5I7UkwJJjc4xdt7qTkwWdtl5gM0y2giFqKA&usqp=CAU');
+            background-size: cover; /* Adjusts the size of the background image */
+            background-repeat: no-repeat; /* Prevents the background image from repeating */
+            /* You can add more styles to the div here */
+           width: 100%;
+            height: 100%;  /*Set the desired height */
+        } 
+
+        .button2{
+
+            background-color: rgb(4, 12, 126);
+            padding: 15px 80px;
+            position: relative;
+            top:40px;
+            color: white;
+            text-decoration: none;
+            font-size: medium;
+
+        }
+
+        .button2:hover{
+
+            background-color: rgb(90, 228, 26);
+            color: black;
+        }
+
+        .event{
+        position: relative;
+        top:50px;
+        text-align:center;
+        box-shadow:0 6px 70px rgb(235, 45, 11);/*brings box around the card*/
+        padding:30px;
+        border-radius: 10px;
+        width:500px;
+        height: 650px;
+        background-color: whitesmoke;
+        
+
+
+
+        }
+
+       /* .tags{
+
+            color: rgb(3, 22, 85);
+            font-family:monospace;
+            font-size: large;
+
+        } */
+
+
+    /* input[type="text"] */.align{ 
+      width: 300px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      color: rgb(3, 22, 85);
+      font-family:monospace;
+      font-size: large;
+    }
+        
+        
+    </style>
+</head>
+<body>
+    <header><!--in this section comes an image and a navigation bar-->
+        <img id="logo" src="https://www.efuturex.com/static/assets/img/EFUTUREX-Logo.png" alt="logo here"/><!--alt for alternative text if image not loaded-->
+        <nav>
+            <a class="nav-link" href="./index.html">Home</a>
+            <a class="nav-link" href="">Login</a>
+            <a class="nav-link" href="">Registration</a>
+        </nav>
+    </header>
+    <form action="{% url 'eventdetail' event.pk %}"  method="POST" style="display: flex; justify-content: center;"> <!--either get or post-->
+
+        <div class="event">
+            <h2 class="event-title" style="color:rgb(4, 12, 126);font-family: 'Russo One', sans-serif; text-decoration: underline;">{{event.event_title}}</h2>
+            <p class="tags event-date">{{event.date}}</p>
+            <p class="tags event-location">{{event.location}}</p>
+            <p class="tags event-description">{{event.description}}</p>
+            
+            <br>
+            <h1 style="color:rgb(4, 12, 126); font-family: 'Russo One', sans-serif; font-size:35px;"><b>Apply For This Event</b></h1>
+            {%  csrf_token %}
+            {{form.as_p}}
+            <!-- <label for="" class="tags">Full Name:</label> <br>
+            <input   type="text" placeholder="enter name"><br><br>
+            <label for="myTextBox" class="tags">Email:</label> <br>  for is used to link label and name
+            <input    type="text" placeholder="enter mail id"><br><br>
+            <label for="myTextBox" class="tags">Phone:</label> <br>
+            <input   type="text" placeholder="enter phone number"><br> -->
+            <input type="submit" class=" button2" value="Apply">
+    
+
+        </div>
+    
+
+    </form>
+
+      
+   
+    
+    
+
+    
+</body>
+</html>

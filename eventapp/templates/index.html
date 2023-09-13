@@ -1,0 +1,56 @@
+<!-- Block elements:uses the full horizontal page eg. h1 to h9,p tag etc
+Inline Elements:takes only space required eg. a tag,span tag -->
+
+<!-- header and footer tags -->
+
+<!DOCTYPE html> 
+{% load static %}
+<html lang="en">
+<head><!--whatever info to be given to browser-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisat Web Page</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <style>
+        /* p{
+            color:blueviolet;  /*this is internal styling
+        } */
+    </style>
+</head>
+<body>
+    <!--Section 1-->
+    <header><!--in this section comes an image and a navigation bar-->
+        <img id="logo" src="https://www.efuturex.com/static/assets/img/EFUTUREX-Logo.png" alt="logo here"/><!--alt for alternative text if image not loaded-->
+        <nav>
+            <a class="nav-link" href="">Home</a>
+            <a class="nav-link" href="">Login</a>
+            <a class="nav-link" href="">Registration</a>
+        </nav>
+    </header>
+
+    <!--Section 2-->
+    <section id="events">
+        {% for event in events %}
+        <div class="event-card">
+            <h2 class="event-title"  style="color:rgb(3, 22, 85);font-family: 'Russo One', sans-serif;">{{event.event_title}}</h2><!--inline styling-->
+            <p class="event-location"><h1>{{event.location}}</h1></p>
+            <p class="event-date"style="padding-top: 30px;"><b>{{event.date}}</b> </p>
+            <a href="{% url 'eventdetail' event.pk%}" class="details-btn">Details</a>
+        </div>
+        {% endfor %}
+        
+       
+    </section>
+
+    <!--SEction 3-->
+    <footer>
+        <p style="color:white"> &copy; 2023 Event Registration System</p>
+    </footer>   
+    
+    <!-- id : used to uniquely identify an element  class: multiple elements are grouped with similar characteristics-->
+    
+</body>
+</html>
